@@ -1,11 +1,20 @@
 {
-  "name": "authentication-system",
-  "version": "1.0.0",
-  "description": "a basic auth system in express",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "yashPundhir",
-  "license": "ISC"
+	"name": "authentication-system",
+	"version": "1.0.0",
+	"description": "a basic auth system in express",
+	"type": "module",
+	"main": "server.js",
+	"scripts": {
+		"start": "node src/server.js",
+		"dev": "nodemon src/server.js"
+	},
+	"author": "yashPundhir",
+	"license": "ISC",
+	"devDependencies": {
+		"nodemon": "^3.1.9"
+	},
+	"dependencies": {
+		"dotenv": "^16.4.7",
+		"express": "^4.21.2"
+	}
 }
