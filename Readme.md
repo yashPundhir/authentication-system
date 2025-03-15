@@ -1,1 +1,1 @@
-## A basic authentication system in express
+## A basic authentication system in express.
