@@ -14,6 +14,10 @@ app.get("/home", (req, res) => {
 	res.send("This is home route");
 });
 
+app.get("/about", (req, res) => {
+	res.send("This is about route");
+});
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
