@@ -18,6 +18,10 @@ app.get("/about", (req, res) => {
 	res.send("This is about route");
 });
 
+app.get("/contact", (req, res) => {
+	res.send("This is contact route");
+});
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
