@@ -26,6 +26,10 @@ app.get("/login", (req, res) => {
 	res.send("This is login route");
 });
 
+app.get("/logout", (req, res) => {
+	res.send("This is logout route");
+});
+
 app.listen(port, () => {
 	console.log(`Example app listening on port ${port}`);
 });
