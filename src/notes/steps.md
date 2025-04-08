@@ -1,0 +1,5 @@
+- `npm init`
+- pkg.json mein type: module
+- create .env file and add sensitive data to it
+- create `.gitignore` file and go to [gitignore generator](https://mrkandreev.name/snippets/gitignore-generator/) and search `node` in the search bar, create gitignore data there and copy that data into the local `.gitignore` file
+- add `express` to the project
