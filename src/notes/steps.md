@@ -21,4 +21,4 @@
 
 - create `.gitignore` file and go to [gitignore generator](https://mrkandreev.name/snippets/gitignore-generator/) and search `node` in the search bar, create gitignore data there and copy that data into the local `.gitignore` file. Make sure `.env` file is mentioned inside the `.gitignore` file.
 
-- add `dotenv` to the project and use it to access the env variables inside the project securely
+- add `dotenv` to the project and use it to access the env variables inside the project securely.
