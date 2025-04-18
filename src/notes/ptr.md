@@ -10,7 +10,7 @@ app.get("login", (req, res) => {
 });
 ```
 
-correct approach:
+correct approach =>
 
 ```javascript
 app.get("/login", (req, res) => {
