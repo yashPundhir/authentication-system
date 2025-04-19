@@ -2,7 +2,7 @@
 
 > routes always start from `/`
 
-wrong approach:
+wrong approach =>
 
 ```javascript
 app.get("login", (req, res) => {
