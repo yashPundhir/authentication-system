@@ -1,6 +1,6 @@
 - in express, while making routes, never make routes like: `login`, make routes like: `/login`
 
-> routes always start from `/`
+> routes always starts from `/`
 
 wrong approach =>
 
