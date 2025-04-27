@@ -22,6 +22,10 @@ app.get("/contact", (req, res) => {
 	res.send("This is contact route");
 });
 
+app.get("/test", (req, res) => {
+	res.send("This is test route");
+});
+
 app.get("/login", (req, res) => {
 	res.send("This is login route");
 });
