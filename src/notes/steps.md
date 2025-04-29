@@ -43,3 +43,20 @@
   	})
   );
   ```
+
+- after that, add these 2 lines of code:
+
+  ```javascript
+  app.use(express.json());
+
+  app.use(
+  	express.urlencoded({
+  		extended: true,
+  	})
+  );
+  ```
+
+  - 1st line will allow express to access the json data send by the client via `req.body`
+  - 2nd line will allow express to perform url encoding on the data sent via the url
+
+- after this, install `mongoose` to the project and connect DB.
