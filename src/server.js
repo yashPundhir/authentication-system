@@ -1,10 +1,31 @@
 import express from "express";
 
-import "dotenv/config";
+import dotenv from "dotenv";
+
+import cors from "cors";
+
+dotenv.config();
 
 const app = express();
 
 const port = process.env.PORT || 3000;
+
+app.use(
+	cors({
+		origin: [`http://localhost:${port}`],
+		credentials: true,
+		methods: ["GET", "POST", "DELETE", "OPTIONS"], // methods mentioned here are not case sensitive
+		allowedHeaders: ["Content-Type", "Authorization"],
+	})
+);
+
+app.use(express.json());
+
+app.use(
+	express.urlencoded({
+		extended: true,
+	})
+);
 
 app.get("/", (req, res) => {
 	res.send("Hello World!");
@@ -16,22 +37,6 @@ app.get("/home", (req, res) => {
 
 app.get("/about", (req, res) => {
 	res.send("This is about route");
-});
-
-app.get("/contact", (req, res) => {
-	res.send("This is contact route");
-});
-
-app.get("/test", (req, res) => {
-	res.send("This is test route");
-});
-
-app.get("/login", (req, res) => {
-	res.send("This is login route");
-});
-
-app.get("/logout", (req, res) => {
-	res.send("This is logout route");
 });
 
 app.listen(port, () => {

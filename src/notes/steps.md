@@ -15,10 +15,31 @@
    },
   ```
 
-- then use this command to run the project: `npm run commandName`. Ex: `npm run start` or `npm run dev`
+- then use this command to run the project: `npm run commandName`. Ex: `npm run start` or `npm run dev` and u can see the output of get req on either `http://localhost:${port}` or `http://127.0.0.1:${port}`
 
 - create .env file and add sensitive data to it like `PORT`
 
 - create `.gitignore` file and go to [gitignore generator](https://mrkandreev.name/snippets/gitignore-generator/) and search `node` in the search bar, create gitignore data there and copy that data into the local `.gitignore` file. Make sure `.env` file is mentioned inside the `.gitignore` file.
 
-- add `dotenv` to the project and use it to access the env variables inside the project securely.
+- add `dotenv` to the project and use it to access the env variables inside the project securely. Import dotenv to the code like below so that some extra things can be added to the config of the dotenv later on as per requirement:
+
+  ```javascript
+  import dotenv from "dotenv";
+
+  dotenv.config();
+  ```
+
+- add cors pkg to the project and use it like this:
+
+  ```javascript
+  import cors from "cors";
+
+  app.use(
+  	cors({
+  		origin: [`http://localhost:${port}`],
+  		credentials: true,
+  		methods: ["GET", "POST", "DELETE", "OPTIONS"],
+  		allowedHeaders: ["Content-Type", "Authorization"],
+  	})
+  );
+  ```
