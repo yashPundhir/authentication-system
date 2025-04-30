@@ -60,3 +60,5 @@
   - 2nd line will allow express to perform url encoding on the data sent via the url
 
 - after this, install `mongoose` to the project and connect DB.
+
+> till here, basic boilerplate code for a express project is done
