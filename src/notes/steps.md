@@ -62,3 +62,17 @@
 - after this, install `mongoose` to the project and connect DB.
 
 > till here, basic boilerplate code for a express project is done
+
+- now discuss the DB structure of the entire project and then start writing schemas.
+
+  - boilerplate code for defining schema:
+
+    ```javascript
+    import mongoose from "mongoose";
+
+    const userSchema = new mongoose.Schema();
+
+    const User = mongoose.model("User", userSchema);
+
+    export default User;
+    ```

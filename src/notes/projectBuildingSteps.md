@@ -1,0 +1,2 @@
+- What to build
+- what data to host/store in DB (what fields needs to be there in DB)

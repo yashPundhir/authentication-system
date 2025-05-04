@@ -27,3 +27,7 @@
   ```
 
 - whenever some change is done in the .env file, always restart the server so that changes would reflect in the output
+
+- when naming files inside `models` folder, start with capital letter:
+  - user.model.js => not standard practice
+  - User.model.js => standard practice
