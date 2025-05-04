@@ -1,4 +1,4 @@
 ## A basic authentication system in express.
 
-### DB Used is mongoDB and PostgreSQL with prisma
+### DB Used is mongoDB and PostgreSQL with prisma as ORM.
 
