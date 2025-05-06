@@ -1,2 +1,5 @@
 - What to build
 - what data to host/store in DB (what fields needs to be there in DB)
+- create schemas
+- segregate routes and controllers
+- start writing logic controllers

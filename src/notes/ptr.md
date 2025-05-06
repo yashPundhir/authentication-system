@@ -34,3 +34,23 @@
   - User.model.js => standard practice
 
 - when working with financial data, it is always advised to store financial data in paise (or in the smallest unit of that current working currency) => (lowest possible currency)
+
+- schema in DB is basically creating blocks to store data (basically wrt tables defining what are the columns in a table & wrt noSQL data, defining keys for the key-value pairs of the data object)
+
+- make first letter of the file capital only for model files, for rest of the files follow camel case:
+
+  - User.model.js
+  - user.controllers.js
+
+- after segregating the routes and defining them in routes folder, use them in server.js like this:
+
+  ```javascript
+  // import the routes file
+  import userRoutes from "./routes/user.routes.js";
+
+  app.use("/api/v1/users", userRoutes); // correct
+
+  app.use("/api/v1/users/", userRoutes); // wrong
+  ```
+
+- when working with backend, data comes from user via either req body or query params or via cookies
