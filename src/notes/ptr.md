@@ -54,3 +54,5 @@
   ```
 
 - when working with backend, data comes from user via either req body or query params or via cookies
+
+- validation libraries: zod, yup, formik, express-validator
