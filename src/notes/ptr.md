@@ -56,3 +56,7 @@
 - when working with backend, data comes from user via either req body or query params or via cookies
 
 - validation libraries: zod, yup, formik, express-validator
+
+- tools for sending emails: nodemailer, resend
+
+- we can use nodemailer to send email, but nodemailer requires some crucial info to send email. To avoid that, we can use mailtrap to create fake email account for testing purpose.
