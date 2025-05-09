@@ -60,3 +60,5 @@
 - tools for sending emails: nodemailer, resend
 
 - we can use nodemailer to send email, but nodemailer requires some crucial info to send email. To avoid that, we can use mailtrap to create fake email account for testing purpose.
+
+- postgreSQL can be used with neon DB.
