@@ -675,3 +675,67 @@ In this example, `math.js` is only imported when `loadMathModule()` is called.
 8. **Dynamic Import**: Import modules only when needed, for performance optimization.
 
 ---
+
+### Ques: how to set data in cookies using Express
+
+Here's how to set data in cookies using Express:
+
+- Install `cookie-parser`:
+
+  - First, you need to install the cookie-parser middleware:
+    `npm install cookie-parser`
+
+- Use the cookie-parser middleware:
+
+  - In your Express app, include cookie-parser as middleware:
+
+    ```javascript
+    const express = require("express");
+    const cookieParser = require("cookie-parser");
+
+    const app = express();
+    app.use(cookieParser());
+    ```
+
+- Setting cookies:
+
+  - To set a cookie, use the `res.cookie()` method. This method takes the cookie name, value, and an optional options object:
+    ```javascript
+    app.get("/setcookie", (req, res) => {
+    	res.cookie("myCookie", "cookieValue", {
+    		maxAge: 3600000, // Cookie expires in 1 hour (in milliseconds)
+    		httpOnly: true, // Cookie cannot be accessed by client-side JavaScript
+    		secure: true, // Cookie only sent over HTTPS
+    	});
+    	res.send("Cookie set!");
+    });
+    ```
+
+- Accessing Cookies:
+
+  - You can access cookies using `req.cookies` object:
+    ```javascript
+    app.get("/getcookie", (req, res) => {
+    	const cookieValue = req.cookies.myCookie;
+    	res.send(`Cookie value: ${cookieValue}`);
+    });
+    ```
+
+- Deleting Cookies:
+  - To delete a cookie, use `res.clearCookie()` method, specifying the cookie's name:
+    ```javascript
+    app.get("/deletecookie", (req, res) => {
+    	res.clearCookie("myCookie");
+    	res.send("Cookie deleted!");
+    });
+    ```
+
+### Important Considerations:
+
+- Security: Set httpOnly: true to prevent client-side JavaScript from accessing the cookie. Use secure: true when your site uses HTTPS.
+- Expiration: Use maxAge or expires to set cookie expiration. maxAge specifies the cookie's lifetime in milliseconds, while expires takes a date object.
+- Domain and Path: You can also set the domain and path options to control the cookie's scope.
+- Signed Cookies: For security, consider using signed cookies with cookie-parser's secret option to prevent tampering.
+- Session Management: For more complex data storage and user sessions, consider using express-session middleware, which often uses cookies internally.
+
+By using these methods, you can effectively manage cookies in your Express applications.

@@ -2,6 +2,10 @@ import crypto from "crypto";
 
 import nodemailer from "nodemailer";
 
+import bcrypt from "bcryptjs";
+
+import jwt from "jsonwebtoken";
+
 import User from "../models/User.model.js";
 
 export const registerUser = async (req, res) => {
@@ -140,6 +144,75 @@ export const verifyUser = async (req, res) => {
 			success: false,
 			error: error,
 			message: "user not verified",
+		});
+	}
+};
+
+export const loginUser = async (req, res) => {
+	const { email, password } = req.body;
+
+	if (!email || !password) {
+		return res.status(400).json({
+			success: false,
+			message: "Both email & password are required",
+		});
+	}
+
+	try {
+		const existingUser = await User.findOne({ email });
+
+		if (!existingUser) {
+			return res.status(400).json({
+				success: false,
+				message: "invalid email or password",
+			});
+		}
+
+		const isPasswordCorrect = await bcrypt.compare(
+			password,
+			existingUser.password
+		);
+
+		if (!isPasswordCorrect) {
+			return res.status(400).json({
+				success: false,
+				message: "invalid password",
+			});
+		}
+
+		if (!existingUser.isVerified) {
+			return res.status(400).json({
+				success: false,
+				message: "User is not verified. Please verify your email",
+			});
+		}
+
+		const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, {
+			expiresIn: process.env.JWT_EXPIRY_TIME,
+		});
+
+		const cookieOptions = {
+			maxAge: 24 * 60 * 60 * 1000,
+			httpOnly: true,
+			secure: true,
+		};
+
+		res.cookie("token", token, cookieOptions);
+
+		res.status(200).json({
+			success: true,
+			message: "user logged in successfully",
+			token,
+			user: {
+				id: existingUser._id,
+				name: existingUser.name,
+				role: existingUser.role,
+			},
+		});
+	} catch (error) {
+		return res.status(400).json({
+			success: false,
+			message: "user login failed",
 		});
 	}
 };

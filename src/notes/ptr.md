@@ -62,3 +62,5 @@
 - we can use nodemailer to send email, but nodemailer requires some crucial info to send email. To avoid that, we can use mailtrap to create fake email account for testing purpose.
 
 - postgreSQL can be used with neon DB.
+
+- while writing hooks for schemas, always use normal js funcs as in hooks we cannot use arrow funcs as callbacks.

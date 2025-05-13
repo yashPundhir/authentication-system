@@ -30,3 +30,13 @@
   ```
 
   - now every request will be sent to `userRoutes` when coming to `/api/v1/users/*`
+
+- syntax for hooks (pre and post) for schemas:
+
+  ```javascript
+  userSchema.pre("save", async function (save) {
+  	// business logic
+
+  	save();
+  });
+  ```

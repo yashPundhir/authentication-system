@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 
 import cors from "cors";
 
+import cookieParser from "cookie-parser";
+
 import { connectToDB } from "./utils/db.js";
 
 // import all routes
@@ -31,6 +33,8 @@ app.use(
 		extended: true,
 	})
 );
+
+app.use(cookieParser());
 
 app.get("/", (req, res) => {
 	res.send("Hello World!");
