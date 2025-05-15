@@ -216,3 +216,49 @@ export const loginUser = async (req, res) => {
 		});
 	}
 };
+
+export const userProfile = async (req, res) => {
+	try {
+		const userId = req.user.id;
+
+		const existingUser = await User.findById(userId).select("-password");
+
+		if (!existingUser) {
+			return res.status(400).json({
+				success: false,
+				message: "User not found",
+			});
+		}
+
+		// console.log(existingUser);
+
+		res.status(200).json({
+			success: true,
+			userInfo: {
+				name: existingUser.name,
+				email: existingUser.email,
+				role: existingUser.role,
+				isVerified: existingUser.isVerified,
+			},
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: "internal server error",
+		});
+	}
+};
+
+export const logoutUser = async (req, res) => {
+	// simply clear the cookies
+
+	try {
+		const cookieOptions = {
+			maxAge: 24 * 60 * 60 * 1000,
+			httpOnly: true,
+			secure: true,
+		};
+
+		res.cookie("token", null, cookieOptions);
+	} catch (error) {}
+};

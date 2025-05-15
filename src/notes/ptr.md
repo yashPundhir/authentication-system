@@ -64,3 +64,19 @@
 - postgreSQL can be used with neon DB.
 
 - while writing hooks for schemas, always use normal js funcs as in hooks we cannot use arrow funcs as callbacks.
+
+- during user login, we created JWT token and gave it to user cookies. Now for each route: `/login` `/profile` `/forgotPassword` `/resetPassword`, we always have to check first whether the user is authenticated or not, and then only we can proceed with the specific functionality of the route. This thing is achieved using middleware.
+
+- in middlewares, a `next()` flag is always passed at the end so that respective controller starts execution.
+
+- middlewares are always used in the routes.
+
+  - For ex:
+
+    ```javascript
+    router.get("/profile", isLoggedIn, userProfile); // isLoggedIn => middleware & userProfile=> controller
+    ```
+
+  - In the above written code example, we don't execute the middlewares and controllers there only, rather we pass reference to those methods which are called when user visits that particular route. And this is called `event driven architecture`
+
+  - after the task of middleware is done, then to move to controller, we use `next()` flag to do so and thus we pass it end at the end of the middleware. but as we use `try-catch` block to handle errors in middlewares also, we use `next()` in `try` block also at the end to move to controller. But this creates error as in this `next()` is called twice => `1st time in try block and 2nd time at the end of middleware func definition`. To avoid this, inside the `try` block, use `next()` with `return` like this=> `return next()` and then at the end of middleware func definition, simply call `next()`. So, with this, if `try` block succeed, `next()` is called with return, so the other `next()` won't be called, but if `try` block fails, then `next()` flag at the end of func definition is called to pass control to controller.
