@@ -5,3 +5,5 @@
 - start watching `Building full stack project 2` from `02:37:00` - `till end of video` to go through all the questions asked in the cohort
 
 - start watching `Finishing backend with mongoDB` from `00:00:00`-`09:50:00` to go through all the fun at the start of the class
+
+- start watching `Finishing backend with mongoDB` from `01:25:40`-`01:53:00` to go through all the doubts of the class

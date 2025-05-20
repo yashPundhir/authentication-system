@@ -251,14 +251,54 @@ export const userProfile = async (req, res) => {
 
 export const logoutUser = async (req, res) => {
 	// simply clear the cookies
+	// see notes for more info
 
 	try {
 		const cookieOptions = {
-			maxAge: 24 * 60 * 60 * 1000,
 			httpOnly: true,
 			secure: true,
 		};
 
-		res.cookie("token", null, cookieOptions);
+		res.clearCookie("token", cookieOptions);
+
+		res.status(200).json({
+			success: true,
+			message: "logged out successfully",
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: "internal server error",
+		});
+	}
+};
+
+export const forgotPassword = async (req, res) => {
+	// get email
+	// find user based on email
+	// create resetPasswordToken
+	// set resetPasswordTokenExpiry => Date.now() + 10 *60 *1000 => user.save()
+	// send email => design url
+
+	try {
+	} catch (error) {}
+};
+
+export const resetPassword = async (req, res) => {
+	// collect token from params
+	// get new password from req.body
+
+	const { token } = req.params;
+	const { password } = req.body;
+
+	try {
+		User.findOne({
+			resetPasswordToken: token,
+			resetPasswordTokenExpiry: { $gt: Date.now() },
+		});
+
+		// set password in user
+		// resetPasswordToken, resetPasswordTokenExpiry => reset
+		// save
 	} catch (error) {}
 };

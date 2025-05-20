@@ -2,6 +2,7 @@ import express from "express";
 
 import {
 	loginUser,
+	logoutUser,
 	registerUser,
 	userProfile,
 	verifyUser,
@@ -18,5 +19,7 @@ router.get("/verify/:token", verifyUser);
 router.post("/login", loginUser);
 
 router.get("/profile", isLoggedIn, userProfile);
+
+router.get("/logout", isLoggedIn, logoutUser);
 
 export default router;

@@ -34,6 +34,4 @@ export const isLoggedIn = async (req, res, next) => {
 			message: "Internal Server Error",
 		});
 	}
-
-	next();
 };
